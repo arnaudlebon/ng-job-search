@@ -1,0 +1,46 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 0px;
+}
+
+.header {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 2rem;
+  color: #333;
+}
+
+nav {
+  border: 0;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tab {
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #333;
+  background-color: #f1f1f1;
+  width: 100%;
+  /*border-radius: 8px 8px 0 0;*/
+  margin: 0 5px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.tab.active {
+  background-color: #ffffff;
+  border-bottom: 2px solid #ffffff;
+  /*box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);*/
+}
