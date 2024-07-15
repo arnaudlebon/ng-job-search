@@ -1,12 +1,12 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { JobDetails } from '../../interfaces/jobs.interface';
 import { CommonModule } from '@angular/common';
-import { JobCardComponent } from '../../components/job-card/job-card.component';
+import { JobInfoComponent } from '../../components/job-info/job-info.component';
 
 @Component({
   selector: 'app-job-details',
   standalone: true,
-  imports: [CommonModule, JobCardComponent],
+  imports: [CommonModule, JobInfoComponent],
   templateUrl: './job-details.component.html',
   styleUrl: './job-details.component.css',
 })

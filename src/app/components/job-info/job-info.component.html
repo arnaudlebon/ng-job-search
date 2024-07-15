@@ -3,18 +3,18 @@
   <div>
     <h1>{{ job().companyName }} - {{ job().title }}</h1>
     <div class="job-meta">
-      @for (industry of job().industries; track $index) {
-        <span class="job-category" [innerHTML]="industry"></span>
-      }
       @for (type of job().types; track $index) {
         <span class="job-category" [innerHTML]="type"></span>
+      }
+      @for (industry of job().industries; track $index) {
+        <span class="job-category" [innerHTML]="industry"></span>
       }
     </div>
   </div>
   <span class="icon-star" [id]="'star-' + job().id" [appToggleFavorite]="job().id"></span>
 </div>
 <div class="job-info">
-  <p><strong>Publish date:</strong> {{ job().publishDate }}</p>
+  <p><strong>Publish date:</strong> {{ job().publishDate | date:'MM/dd/yy' }}</p>
   <p><strong>Location:</strong> {{ job().location }}</p>
   <p><strong>Reference:</strong> {{ job().reference }}</p>
 </div>

@@ -4,12 +4,12 @@ import { CommonModule } from '@angular/common';
 import { ToggleFavoriteDirective } from '../../directives/toggle-favorite.directive';
 
 @Component({
-  selector: 'app-job-card',
+  selector: 'app-job-info',
   standalone: true,
   imports: [CommonModule, ToggleFavoriteDirective],
-  templateUrl: './job-card.component.html',
-  styleUrl: './job-card.component.css'
+  templateUrl: './job-info.component.html',
+  styleUrl: './job-info.component.css'
 })
-export class JobCardComponent {
+export class JobInfoComponent {
   job = input.required<JobDetails>()
 }
