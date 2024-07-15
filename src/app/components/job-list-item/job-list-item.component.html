@@ -1,7 +1,7 @@
 <div class="job-item">
   <img class="small" [src]="job().companyLogo" />
   <div class="job-content">
-    <h3>{{ job().title }}</h3>
+    <h3><a [routerLink]="['/jobs', job().id]" >{{ job().title }}</a></h3>
     <div class="job-description">
       <p>Company: {{ job().companyName }}</p>
       <p>Reference: {{ job().reference }}</p>

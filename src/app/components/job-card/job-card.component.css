@@ -1,0 +1,48 @@
+.job-details-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+.job-header {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 20px;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+
+.job-header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.job-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.job-meta .job-type,
+.job-meta .job-category {
+  padding: 4px 8px;
+  border-radius: 4px;
+  background-color: #e9ecef;
+}
+
+.job-info p {
+  margin: 4px 0.5rem;
+}
+
+.job-description,
+.job-responsibilities {
+  margin-top: 20px;
+}
+
+.job-responsibilities ul {
+  padding-left: 20px;
+}
