@@ -22,12 +22,8 @@ export class JobsFavoritesService {
 
   toggleFavorite(id: JobId): void {
     const favorites = this.favoritesSignal();
-    const index = this.favoritesSignal().indexOf(id);
-
-    let updatedFavorites = [];
-    if (index !== -1) updatedFavorites = favorites.filter((fav) => fav !== id);
-    else updatedFavorites = [...favorites, id];
-
+    const isFavorite = favorites.includes(id);
+    const updatedFavorites = isFavorite ? favorites.filter((fav) => fav !== id) : [...favorites, id];
     this.favoritesSignal.set(updatedFavorites);
   }
 }

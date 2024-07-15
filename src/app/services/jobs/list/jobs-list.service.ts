@@ -24,7 +24,7 @@ export class JobsListService {
     this.http
       .get<Jobs>(ENDPOINT)
       .pipe(
-        delay(100),
+        //delay(100),
         map((data) => {
           if (ids && ids.length > 0) {
             return data.filter((job) => ids.includes(job.id));
