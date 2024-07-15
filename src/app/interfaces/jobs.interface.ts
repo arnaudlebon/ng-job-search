@@ -15,3 +15,6 @@ export interface JobDetails extends Job {
 }
 
 export type Jobs = Job[];
+
+export type JobId = Job['id'];
+export type JobIds = Array<Job['id']>;

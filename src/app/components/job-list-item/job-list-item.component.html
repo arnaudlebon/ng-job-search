@@ -1,0 +1,16 @@
+<div class="job-item">
+  <img class="small" [src]="job().companyLogo" />
+  <div class="job-content">
+    <h3>{{ job().title }}</h3>
+    <div class="job-description">
+      <p>Company: {{ job().companyName }}</p>
+      <p>Reference: {{ job().reference }}</p>
+    </div>
+  </div>
+  <span
+    *ngIf="displayToggleFavorites()"
+    class="icon-star"
+    [id]="'star-' + job().id"
+    [appToggleFavorite]="job().id"
+  ></span>
+</div>

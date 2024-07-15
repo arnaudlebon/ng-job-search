@@ -1,15 +1,14 @@
 <div class="container">
-  @for (job of jobs(); track job.id) {
-    <div class="job-item">
-      <img class="small" [src]="job.companyLogo" />
-      <div class="job-content">
-        <h3>{{ job.title }}</h3>
-        <div class="job-description">
-          <p>Company: {{ job.companyName }}</p>
-          <p>Reference: {{ job.reference }}</p>
-        </div>
-      </div>
-      <span class="icon-star" [id]="'star-' + job.id"></span>
+
+  @if(jobsListService.isListing()) {
+    <div class="spinner-table">
+      <div class="spinner primary"></div>
     </div>
+  } @else {
+    @for (job of jobs(); track job.id) {
+      <app-job-list-item [job]="job" [displayToggleFavorites]="true"></app-job-list-item>
+    } @empty {
+      <p>No jobs found</p>
+    }
   }
 </div>

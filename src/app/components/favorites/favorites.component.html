@@ -1,1 +1,11 @@
-<p>favorites works!</p>
+@if(jobsListService.isListing()) {
+  <div class="spinner-table">
+    <div class="spinner primary"></div>
+  </div>
+} @else {
+  @for (job of favoritesJobs(); track job.id) {
+    <app-job-list-item [job]="job"></app-job-list-item>
+  } @empty {
+    <p>No favorites selected</p>
+  }
+}
