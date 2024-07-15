@@ -11,6 +11,7 @@
       }
     </div>
   </div>
+  <span class="icon-star" [id]="'star-' + job().id" [appToggleFavorite]="job().id"></span>
 </div>
 <div class="job-info">
   <p><strong>Publish date:</strong> {{ job().publishDate }}</p>

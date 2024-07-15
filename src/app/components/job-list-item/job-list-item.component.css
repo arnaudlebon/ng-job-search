@@ -37,14 +37,6 @@
 .job-description p {
   margin: 2px 10px 2px 0;
 }
-
-.icon-star {
-  width: 24px;
-  height: 24px;
-  background-size: cover;
-  cursor: pointer;
-}
-
 a {
   text-decoration: none;
   color: #0277bd !important;
