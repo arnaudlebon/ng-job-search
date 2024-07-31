@@ -3,7 +3,7 @@
     <div class="spinner primary"></div>
   </div>
 } @else {
-  @for (job of favoritesJobs(); track job.id) {
+  @for (job of jobFavorites$ | async; track job.id) {
     <app-job-list-item [job]="job"></app-job-list-item>
   } @empty {
     <p>No favorites selected</p>

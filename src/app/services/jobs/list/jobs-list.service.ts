@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Signal, inject, signal } from '@angular/core';
 import { Jobs } from '../../../interfaces/jobs.interface';
-import { delay, map } from 'rxjs';
+import { delay, map, Observable, shareReplay, switchMap } from 'rxjs';
+import { JobsFavoritesService } from '../favorites/favorites.service';
+import { toObservable } from '@angular/core/rxjs-interop';
 
 const ENDPOINT = '/jobs';
 
@@ -13,29 +15,33 @@ export class JobsListService {
   private listing = signal(false);
   private jobsResults = signal<Jobs>([]);
 
+  private favorites$ = toObservable(inject(JobsFavoritesService).favorites);
+  readonly jobsFavoritesList$: Observable<Jobs> = this.favorites$.pipe(
+    switchMap((jobIds) => this.list(jobIds)),
+    shareReplay(1)
+  );
+
   constructor() {}
 
   get isListing(): Signal<boolean> {
     return this.listing.asReadonly();
   }
 
-  list(ids?: number[]): Signal<Jobs> {
+  list(ids?: number[]): Observable<Jobs> {
     this.listing.set(true);
-    this.http
-      .get<Jobs>(ENDPOINT)
-      .pipe(
-        //delay(100),
-        map((data) => {
-          if (ids && ids.length > 0) {
-            return data.filter((job) => ids.includes(job.id));
-          }
-          return data;
-        })
-      )
-      .subscribe((data) => {
-        this.jobsResults.set(data);
+    return this.http.get<Jobs>(ENDPOINT).pipe(
+      delay(100),
+      map((data) => {
+        if (ids && ids.length > 0) {
+          return data.filter((job) => ids.includes(job.id));
+        }
+        return data;
+      }),
+      map((jobs) => {
+        this.jobsResults.set(jobs);
         this.listing.set(false);
-      });
-    return this.jobsResults.asReadonly();
+        return jobs;
+      })
+    );
   }
 }

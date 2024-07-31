@@ -3,6 +3,7 @@ import { Jobs } from '../../interfaces/jobs.interface';
 import { JobsListService } from '../../services/jobs/list/jobs-list.service';
 import { CommonModule } from '@angular/common';
 import { JobListItemComponent } from '../../components/job-list-item/job-list-item.component';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-jobs-list',
@@ -13,13 +14,5 @@ import { JobListItemComponent } from '../../components/job-list-item/job-list-it
 })
 export class JobsListComponent {
   readonly jobsListService = inject(JobsListService);
-  protected jobs!: Signal<Jobs>;
-
-  constructor() {
-    this.listJobs();
-  }
-
-  listJobs() {
-    this.jobs = this.jobsListService.list();
-  }
+  protected jobs = toSignal(this.jobsListService.list());
 }
